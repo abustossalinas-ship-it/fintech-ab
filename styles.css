@@ -382,7 +382,7 @@ h3 {
 
 .executive-photo {
   position: relative;
-  width: min(100%, 300px);
+  width: min(100%, 220px);
   aspect-ratio: 4 / 5;
   margin: 0 auto 28px;
   padding: 8px;
@@ -833,6 +833,79 @@ h3 {
   padding: 28px;
 }
 
+.timeline-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 10px;
+}
+
+.company-logo {
+  display: inline-flex;
+  min-width: 92px;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border: 1px solid rgba(125, 211, 252, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.86rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.logo-cubik {
+  color: #58c8ff;
+}
+
+.logo-chanchi {
+  color: #0f3b50;
+  background: linear-gradient(135deg, #b8f0e2, #f6b4c6);
+}
+
+.logo-edenred {
+  border-color: rgba(239, 35, 60, 0.24);
+  color: #ffffff;
+  background: #ef233c;
+  border-radius: 999px;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+.logo-ccuno {
+  color: #d8f0ff;
+  letter-spacing: 0.16em;
+}
+
+.logo-cencosud {
+  color: #3984d8;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+.logo-cencosud b {
+  color: #ee2c3c;
+  font-weight: 950;
+}
+
+.logo-transbank {
+  color: #e31b88;
+  letter-spacing: -0.04em;
+  text-transform: lowercase;
+}
+
+.logo-entel {
+  color: #4db1ff;
+  letter-spacing: -0.04em;
+  text-transform: lowercase;
+}
+
 .timeline-card::before {
   position: absolute;
   top: 32px;
@@ -1057,16 +1130,42 @@ li::marker {
 
 @media (max-width: 940px) {
   .site-header {
-    border-radius: 24px;
+    top: 16px;
+    right: 16px;
+    left: auto;
+    width: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    transform: none;
+  }
+
+  .site-header.is-scrolled {
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .brand {
+    display: none;
   }
 
   .nav-toggle {
     display: block;
+    width: 58px;
+    height: 58px;
+    border: 1px solid rgba(125, 211, 252, 0.16);
+    background: rgba(12, 34, 55, 0.88);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(16px);
   }
 
   .main-nav {
     position: fixed;
-    top: 74px;
+    top: 82px;
     right: 16px;
     left: 16px;
     display: grid;
@@ -1142,17 +1241,16 @@ li::marker {
   .timeline-card::before {
     left: -34px;
   }
+
+  .executive-photo {
+    width: min(100%, 190px);
+  }
 }
 
 @media (max-width: 620px) {
   .site-header {
-    top: 10px;
-    width: min(calc(100% - 20px), var(--max-width));
-    padding: 10px;
-  }
-
-  .brand span:last-child {
-    display: none;
+    top: 14px;
+    right: 14px;
   }
 
   .section {
@@ -1161,7 +1259,7 @@ li::marker {
   }
 
   .hero {
-    padding-top: 120px;
+    padding-top: 112px;
   }
 
   h1 {
@@ -1190,6 +1288,22 @@ li::marker {
   .value-card,
   .credential-card {
     padding: 22px;
+  }
+
+  .timeline-card-header {
+    align-items: flex-start;
+  }
+
+  .company-logo {
+    min-width: 74px;
+    min-height: 34px;
+    padding: 7px 9px;
+    font-size: 0.7rem;
+  }
+
+  .executive-photo {
+    width: min(100%, 165px);
+    border-radius: 26px;
   }
 
   .site-footer {
