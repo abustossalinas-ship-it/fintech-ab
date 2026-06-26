@@ -631,8 +631,11 @@ li::marker {
   font-size: 1.1rem;
 }
 
-.contact-email {
-  margin: 14px 0 0;
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 14px;
 }
 
 .site-footer {
@@ -780,6 +783,7 @@ li::marker {
   }
 
   .hero-actions,
+  .contact-actions,
   .button {
     width: 100%;
   }
