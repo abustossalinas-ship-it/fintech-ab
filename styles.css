@@ -843,67 +843,59 @@ h3 {
 
 .company-logo {
   display: inline-flex;
-  min-width: 92px;
-  min-height: 42px;
+  width: 128px;
+  min-height: 54px;
   align-items: center;
   justify-content: center;
-  padding: 8px 12px;
+  padding: 9px 12px;
   border: 1px solid rgba(125, 211, 252, 0.18);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.06);
-  font-size: 0.86rem;
-  font-weight: 950;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  text-align: center;
-  text-transform: uppercase;
-  white-space: nowrap;
 }
 
-.logo-cubik {
-  color: #58c8ff;
+.company-logo img {
+  display: block;
+  max-width: 100%;
+  max-height: 42px;
+  object-fit: contain;
 }
 
 .logo-chanchi {
-  color: #0f3b50;
-  background: linear-gradient(135deg, #b8f0e2, #f6b4c6);
+  width: 72px;
+  padding: 6px;
+}
+
+.logo-chanchi img {
+  max-height: 58px;
+  border-radius: 14px;
+}
+
+.logo-cubik {
+  width: 136px;
 }
 
 .logo-edenred {
-  border-color: rgba(239, 35, 60, 0.24);
-  color: #ffffff;
-  background: #ef233c;
-  border-radius: 999px;
-  letter-spacing: -0.02em;
-  text-transform: none;
+  width: 106px;
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .logo-ccuno {
-  color: #d8f0ff;
-  letter-spacing: 0.16em;
+  width: 124px;
 }
 
 .logo-cencosud {
-  color: #3984d8;
-  letter-spacing: -0.02em;
-  text-transform: none;
-}
-
-.logo-cencosud b {
-  color: #ee2c3c;
-  font-weight: 950;
+  width: 150px;
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .logo-transbank {
-  color: #e31b88;
-  letter-spacing: -0.04em;
-  text-transform: lowercase;
+  width: 122px;
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .logo-entel {
-  color: #4db1ff;
-  letter-spacing: -0.04em;
-  text-transform: lowercase;
+  width: 88px;
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .timeline-card::before {
@@ -1295,10 +1287,25 @@ li::marker {
   }
 
   .company-logo {
-    min-width: 74px;
-    min-height: 34px;
-    padding: 7px 9px;
-    font-size: 0.7rem;
+    width: 90px;
+    min-height: 38px;
+    padding: 6px 8px;
+  }
+
+  .company-logo img {
+    max-height: 30px;
+  }
+
+  .logo-chanchi {
+    width: 54px;
+  }
+
+  .logo-chanchi img {
+    max-height: 42px;
+  }
+
+  .logo-cencosud {
+    width: 108px;
   }
 
   .executive-photo {
