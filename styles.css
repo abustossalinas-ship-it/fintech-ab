@@ -631,17 +631,8 @@ li::marker {
   font-size: 1.1rem;
 }
 
-.contact-note {
-  display: inline-flex;
-  width: fit-content;
+.contact-email {
   margin: 14px 0 0;
-  padding: 12px 16px;
-  border: 1px solid rgba(125, 211, 252, 0.22);
-  border-radius: 999px;
-  color: #d7efff !important;
-  background: rgba(125, 211, 252, 0.08);
-  font-size: 0.96rem !important;
-  font-weight: 750;
 }
 
 .site-footer {
