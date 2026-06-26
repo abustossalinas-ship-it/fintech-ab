@@ -643,6 +643,66 @@ h3 {
   color: var(--muted);
 }
 
+.venture-card {
+  grid-column: span 2;
+}
+
+.venture-list {
+  display: grid;
+  gap: 14px;
+  margin: 18px 0 0;
+}
+
+.venture-list div {
+  padding-top: 14px;
+  border-top: 1px solid rgba(125, 211, 252, 0.16);
+}
+
+.venture-list dt {
+  margin-bottom: 4px;
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.venture-list dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.testimonial-card {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(160deg, rgba(13, 43, 70, 0.74), rgba(7, 27, 46, 0.72)),
+    var(--bg-card);
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.16);
+}
+
+.testimonial-card p {
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 1.03rem;
+}
+
+.testimonial-card span {
+  color: var(--accent-warm);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .career-strip {
   display: flex;
   flex-wrap: wrap;
@@ -987,8 +1047,13 @@ li::marker {
 
   .logo-strip,
   .results-grid,
-  .project-grid {
+  .project-grid,
+  .testimonial-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .venture-card {
+    grid-column: auto;
   }
 
   .capability-grid {
@@ -1058,7 +1123,8 @@ li::marker {
   .logo-strip,
   .results-grid,
   .capability-grid,
-  .project-grid {
+  .project-grid,
+  .testimonial-grid {
     grid-template-columns: 1fr;
   }
 
