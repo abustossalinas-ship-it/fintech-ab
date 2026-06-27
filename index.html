@@ -67,7 +67,7 @@
             </p>
             <div class="hero-actions" aria-label="Acciones principales">
               <a class="button button-primary" href="assets/cv-ariel-bustos-salinas.pdf" download>Descargar CV</a>
-              <a class="button button-secondary" href="#contacto">Agenda una conversación</a>
+              <a class="button button-secondary" href="#agenda">Agenda una conversación</a>
             </div>
           </div>
 
@@ -460,6 +460,29 @@
             Conversemos sobre liderazgo tecnológico, continuidad operacional, modernización cloud, gobierno TI,
             inteligencia artificial aplicada al negocio o nuevas oportunidades ejecutivas.
           </p>
+          <div id="agenda" class="calendar-card" aria-label="Agendar reunión">
+            <div>
+              <h3>Agenda una reunión</h3>
+              <p>Selecciona una fecha y se abrirá Google Calendar con mi Gmail como invitado.</p>
+            </div>
+            <div class="calendar-controls">
+              <label>
+                Fecha y hora
+                <input type="datetime-local" data-calendar-start required>
+              </label>
+              <label>
+                Duración
+                <select data-calendar-duration>
+                  <option value="30">30 min</option>
+                  <option value="45" selected>45 min</option>
+                  <option value="60">60 min</option>
+                </select>
+              </label>
+              <button class="button button-primary" type="button" data-calendar-submit>
+                Crear cita en Google Calendar
+              </button>
+            </div>
+          </div>
           <div class="contact-actions">
             <a class="button button-primary" href="assets/cv-ariel-bustos-salinas.pdf" download>Descargar CV</a>
             <a
@@ -476,7 +499,7 @@
             >
               WhatsApp
             </a>
-            <a class="button button-secondary" href="tel:+56971419384">Llamar: +56 9 7141 9384</a>
+            <a class="button button-secondary" href="tel:+56971419384" aria-label="Llamar a Ariel Bustos Salinas">Llamar</a>
           </div>
         </div>
       </section>

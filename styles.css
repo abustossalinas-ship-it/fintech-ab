@@ -1060,6 +1060,64 @@ li::marker {
   font-size: 1.1rem;
 }
 
+.calendar-card {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 22px;
+  align-items: end;
+  margin-top: 28px;
+  padding: 22px;
+  border: 1px solid rgba(125, 211, 252, 0.2);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.calendar-card h3 {
+  margin-bottom: 8px;
+}
+
+.calendar-card p {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+.calendar-controls {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(110px, 0.5fr);
+  gap: 12px;
+}
+
+.calendar-controls label {
+  display: grid;
+  gap: 7px;
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.calendar-controls input,
+.calendar-controls select {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  border-radius: 999px;
+  color: var(--text);
+  background: rgba(6, 21, 35, 0.72);
+  padding: 0 14px;
+  outline: none;
+}
+
+.calendar-controls input:focus,
+.calendar-controls select:focus {
+  border-color: rgba(125, 211, 252, 0.62);
+}
+
+.calendar-controls .button {
+  grid-column: 1 / -1;
+}
+
 .contact-actions {
   display: flex;
   position: relative;
@@ -1232,6 +1290,11 @@ li::marker {
 
   .timeline-card::before {
     left: -34px;
+  }
+
+  .calendar-card,
+  .calendar-controls {
+    grid-template-columns: 1fr;
   }
 
   .executive-photo {
