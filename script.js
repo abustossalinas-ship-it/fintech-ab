@@ -8,9 +8,10 @@ const domains = [
   "Operaciones TI",
   "Transformación Digital",
   "Modernización Tecnológica",
+  "Inteligencia Artificial",
   "Cloud & Arquitectura",
   "Gobierno TI",
-  "FinTech e IA",
+  "Product Strategy",
 ];
 
 if (year) {
