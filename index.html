@@ -463,12 +463,15 @@
           <div id="agenda" class="calendar-card" aria-label="Agendar reunión">
             <div>
               <h3>Agenda una reunión</h3>
-              <p>Selecciona una fecha y se abrirá Google Calendar con mi Gmail como invitado.</p>
+              <p>
+                Selecciona un horario de lunes a viernes entre 08:30 y 19:00. Se abrirá Google Calendar con mi Gmail
+                como invitado.
+              </p>
             </div>
             <div class="calendar-controls">
               <label>
                 Fecha y hora
-                <input type="datetime-local" data-calendar-start required>
+                <input type="datetime-local" step="900" data-calendar-start required>
               </label>
               <label>
                 Duración
@@ -481,6 +484,7 @@
               <button class="button button-primary" type="button" data-calendar-submit>
                 Crear cita en Google Calendar
               </button>
+              <p class="calendar-message" data-calendar-message>Lunes a viernes, 08:30 a 19:00.</p>
             </div>
           </div>
           <div class="contact-actions">

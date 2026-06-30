@@ -1118,6 +1118,17 @@ li::marker {
   grid-column: 1 / -1;
 }
 
+.calendar-message {
+  grid-column: 1 / -1;
+  margin: -2px 0 0 !important;
+  color: var(--muted) !important;
+  font-size: 0.92rem !important;
+}
+
+.calendar-message.is-error {
+  color: #fca5a5 !important;
+}
+
 .contact-actions {
   display: flex;
   position: relative;

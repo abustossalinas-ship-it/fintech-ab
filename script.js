@@ -7,6 +7,11 @@ const rotatingDomain = document.querySelector("[data-rotating-domain]");
 const calendarStart = document.querySelector("[data-calendar-start]");
 const calendarDuration = document.querySelector("[data-calendar-duration]");
 const calendarSubmit = document.querySelector("[data-calendar-submit]");
+const calendarMessage = document.querySelector("[data-calendar-message]");
+const BUSINESS_START_HOUR = 8;
+const BUSINESS_START_MINUTE = 30;
+const BUSINESS_END_HOUR = 19;
+const BUSINESS_END_MINUTE = 0;
 const domains = [
   "Operaciones TI",
   "Transformación Digital",
@@ -23,6 +28,10 @@ if (year) {
 
 const padDatePart = (value) => String(value).padStart(2, "0");
 
+const toDateTimeLocalValue = (date) => {
+  return `${date.getFullYear()}-${padDatePart(date.getMonth() + 1)}-${padDatePart(date.getDate())}T${padDatePart(date.getHours())}:${padDatePart(date.getMinutes())}`;
+};
+
 const toGoogleCalendarDate = (date) => {
   return [
     date.getUTCFullYear(),
@@ -36,12 +45,84 @@ const toGoogleCalendarDate = (date) => {
   ].join("");
 };
 
-if (calendarStart instanceof HTMLInputElement) {
-  const now = new Date();
-  now.setMinutes(now.getMinutes() + 60);
-  now.setMinutes(Math.ceil(now.getMinutes() / 15) * 15, 0, 0);
+const isBusinessDay = (date) => {
+  const day = date.getDay();
+  return day >= 1 && day <= 5;
+};
 
-  calendarStart.min = `${now.getFullYear()}-${padDatePart(now.getMonth() + 1)}-${padDatePart(now.getDate())}T${padDatePart(now.getHours())}:${padDatePart(now.getMinutes())}`;
+const minutesFromMidnight = (date) => date.getHours() * 60 + date.getMinutes();
+
+const businessStartMinutes = BUSINESS_START_HOUR * 60 + BUSINESS_START_MINUTE;
+const businessEndMinutes = BUSINESS_END_HOUR * 60 + BUSINESS_END_MINUTE;
+
+const moveToNextBusinessDay = (date) => {
+  const next = new Date(date);
+  next.setDate(next.getDate() + 1);
+  next.setHours(BUSINESS_START_HOUR, BUSINESS_START_MINUTE, 0, 0);
+
+  while (!isBusinessDay(next)) {
+    next.setDate(next.getDate() + 1);
+  }
+
+  return next;
+};
+
+const getNextBusinessSlot = () => {
+  const slot = new Date();
+  slot.setMinutes(slot.getMinutes() + 60);
+  slot.setMinutes(Math.ceil(slot.getMinutes() / 15) * 15, 0, 0);
+
+  if (!isBusinessDay(slot)) {
+    return moveToNextBusinessDay(slot);
+  }
+
+  const slotMinutes = minutesFromMidnight(slot);
+
+  if (slotMinutes < businessStartMinutes) {
+    slot.setHours(BUSINESS_START_HOUR, BUSINESS_START_MINUTE, 0, 0);
+    return slot;
+  }
+
+  if (slotMinutes >= businessEndMinutes) {
+    return moveToNextBusinessDay(slot);
+  }
+
+  return slot;
+};
+
+const setCalendarMessage = (message, isError = false) => {
+  if (!calendarMessage) return;
+  calendarMessage.textContent = message;
+  calendarMessage.classList.toggle("is-error", isError);
+};
+
+const getScheduleValidationMessage = (start, durationMinutes) => {
+  if (Number.isNaN(start.getTime())) {
+    return "Selecciona una fecha y hora válida.";
+  }
+
+  if (!isBusinessDay(start)) {
+    return "Selecciona un día de lunes a viernes.";
+  }
+
+  const startMinutes = minutesFromMidnight(start);
+  const endMinutes = startMinutes + durationMinutes;
+
+  if (startMinutes < businessStartMinutes) {
+    return "El horario disponible comienza a las 08:30.";
+  }
+
+  if (endMinutes > businessEndMinutes) {
+    return "La reunión debe terminar a más tardar a las 19:00.";
+  }
+
+  return "";
+};
+
+if (calendarStart instanceof HTMLInputElement) {
+  const nextBusinessSlot = getNextBusinessSlot();
+  calendarStart.min = toDateTimeLocalValue(nextBusinessSlot);
+  calendarStart.value = toDateTimeLocalValue(nextBusinessSlot);
 }
 
 calendarSubmit?.addEventListener("click", () => {
@@ -53,6 +134,18 @@ calendarSubmit?.addEventListener("click", () => {
 
   const start = new Date(calendarStart.value);
   const durationMinutes = Number(calendarDuration?.value || 45);
+  const validationMessage = getScheduleValidationMessage(start, durationMinutes);
+
+  if (validationMessage) {
+    calendarStart.setCustomValidity(validationMessage);
+    calendarStart.reportValidity();
+    setCalendarMessage(validationMessage, true);
+    return;
+  }
+
+  calendarStart.setCustomValidity("");
+  setCalendarMessage("Horario válido: se abrirá Google Calendar.", false);
+
   const end = new Date(start.getTime() + durationMinutes * 60 * 1000);
   const params = new URLSearchParams({
     action: "TEMPLATE",
@@ -63,6 +156,13 @@ calendarSubmit?.addEventListener("click", () => {
   });
 
   window.open(`https://calendar.google.com/calendar/render?${params.toString()}`, "_blank", "noopener,noreferrer");
+});
+
+[calendarStart, calendarDuration].forEach((control) => {
+  control?.addEventListener("change", () => {
+    calendarStart?.setCustomValidity("");
+    setCalendarMessage("Lunes a viernes, 08:30 a 19:00.", false);
+  });
 });
 
 if (rotatingDomain && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
