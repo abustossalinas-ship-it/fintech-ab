@@ -116,12 +116,10 @@ textarea {
   display: block;
   width: 38px;
   height: 38px;
-  border: 2px solid rgba(125, 211, 252, 0.5);
+  border: 2px solid rgba(222, 216, 205, 0.42);
   border-radius: 50%;
-  background:
-    linear-gradient(135deg, rgba(57, 200, 255, 0.18), rgba(244, 184, 106, 0.2)),
-    rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 4px rgba(125, 211, 252, 0.08);
+  background: rgba(166, 160, 150, 0.9);
+  box-shadow: 0 0 0 4px rgba(222, 216, 205, 0.08);
   overflow: hidden;
 }
 
@@ -385,22 +383,19 @@ h3 {
   width: min(100%, 220px);
   aspect-ratio: 4 / 5;
   margin: 0 auto 28px;
-  padding: 8px;
+  padding: 6px;
   border-radius: 32px;
-  background:
-    linear-gradient(135deg, rgba(57, 200, 255, 0.95), rgba(244, 184, 106, 0.88)),
-    rgba(255, 255, 255, 0.08);
+  background: rgba(166, 160, 150, 0.9);
   box-shadow:
-    0 0 0 1px rgba(125, 211, 252, 0.18),
-    0 30px 90px rgba(0, 0, 0, 0.34),
-    0 0 70px rgba(57, 200, 255, 0.14);
+    0 0 0 1px rgba(222, 216, 205, 0.22),
+    0 30px 90px rgba(0, 0, 0, 0.34);
 }
 
 .executive-photo::after {
   position: absolute;
-  inset: 8px;
+  inset: 6px;
   content: "";
-  border-radius: 25px;
+  border-radius: 26px;
   background: linear-gradient(180deg, transparent 52%, rgba(6, 21, 35, 0.18));
   pointer-events: none;
 }
@@ -409,7 +404,7 @@ h3 {
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 25px;
+  border-radius: 26px;
   object-fit: cover;
   object-position: 50% 16%;
   filter: saturate(0.96) contrast(1.03);
