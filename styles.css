@@ -381,10 +381,10 @@ h3 {
 .executive-photo {
   position: relative;
   width: min(100%, 220px);
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   margin: 0 auto 28px;
   padding: 6px;
-  border-radius: 32px;
+  border-radius: 50%;
   background: rgba(166, 160, 150, 0.9);
   box-shadow:
     0 0 0 1px rgba(222, 216, 205, 0.22),
@@ -392,19 +392,14 @@ h3 {
 }
 
 .executive-photo::after {
-  position: absolute;
-  inset: 6px;
-  content: "";
-  border-radius: 26px;
-  background: linear-gradient(180deg, transparent 52%, rgba(6, 21, 35, 0.18));
-  pointer-events: none;
+  display: none;
 }
 
 .executive-photo img {
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 26px;
+  border-radius: 50%;
   object-fit: cover;
   object-position: 50% 16%;
   filter: saturate(0.96) contrast(1.03);
@@ -1379,7 +1374,7 @@ li::marker {
 
   .executive-photo {
     width: min(100%, 165px);
-    border-radius: 26px;
+    border-radius: 50%;
   }
 
   .site-footer {
